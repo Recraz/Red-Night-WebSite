@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy — [Game Name]</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#8ab4f8}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#071024);color:#ecf2ff}
+    .wrap{max-width:900px;margin:48px auto;padding:28px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.7)}
+    h1{margin:0 0 6px;font-size:24px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    section{margin:18px 0}
+    .code{background:#071428;padding:12px;border-radius:8px;color:#cfe8ff;font-family:Menlo,monospace;font-size:13px}
+    a{color:var(--accent)}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .btn{appearance:none;border:0;padding:8px 12px;border-radius:8px;background:rgba(138,180,248,0.12);color:var(--accent);cursor:pointer}
+    .small{font-size:13px;color:var(--muted)}
+    footer{margin-top:26px;border-top:1px solid rgba(255,255,255,0.03);padding-top:18px;color:var(--muted);font-size:13px}
+    @media (max-width:520px){.wrap{margin:18px;padding:18px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="lead">Effective date: <strong id="effectiveDate">[enter date]</strong></p>
+
+    <section>
+      <p><strong>[Your name / studio name]</strong> ("we", "our", "us") built the game <strong id="gameName">[Game Name]</strong> as a <em>[free/paid]</em> application. This Privacy Policy explains what information we may collect and how we use it.</p>
+    </section>
+
+    <section>
+      <h2>Information Collection and Use</h2>
+      <p>We may collect anonymous and non-personal information, including but not limited to:</p>
+      <ul>
+        <li>Device information (model, operating system, language).</li>
+        <li>Gameplay statistics and usage data (sessions, levels completed, events).</li>
+        <li>Advertising identifiers (for ad personalization, if ads are used).</li>
+      </ul>
+      <p>We do <strong>not</strong> collect personal data (such as name, email, or phone number) unless you explicitly provide it (for support, account features, etc.).</p>
+    </section>
+
+    <section>
+      <h2>Third-Party Services</h2>
+      <p>The game may use third-party services that collect information for their operation. Typical examples:</p>
+      <ul>
+        <li>Google Play Services</li>
+        <li>AdMob (Google)</li>
+        <li>Firebase / Google Analytics</li>
+      </ul>
+      <p class="small">Please review the privacy policies of these services:</p>
+      <div class="code">
+        <p>Google Play Services: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+        <p>AdMob: <a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank">support.google.com/admob/answer/6128543?hl=en</a></p>
+        <p>Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cookies</h2>
+      <p>We do not use cookies directly. Third-party services integrated into the game may use cookies or similar technologies.</p>
+    </section>
+
+    <section>
+      <h2>Security</h2>
+      <p>We take reasonable measures to protect data. However, no transmission or storage method is completely secure.</p>
+    </section>
+
+    <section>
+      <h2>Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy occasionally. We will post the updated policy here and update the Effective Date above.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>If you have questions about this Privacy Policy, contact us at: <span id="contactEmail">[your email]</span></p>
+    </section>
+
+    <div class="meta">
+      <button class="btn" id="copyBtn">Copy policy to clipboard</button>
+      <button class="btn" id="downloadBtn">Download .txt</button>
+      <div class="small">Tip: replace placeholders (<em>[Game Name]</em>, <em>[enter date]</em>, <em>[your email]</em>) before publishing.</div>
+    </div>
+
+    <footer>
+      <div class="small">This template is provided as a starting point only. Make sure to adapt it to your specific data collection and legal requirements.</div>
+    </footer>
+  </main>
+
+  <script>
+    function buildPlainText(){
+      const name = document.getElementById('gameName').textContent || '[Game Name]';
+      const date = document.getElementById('effectiveDate').textContent || '[enter date]';
+      const email = document.getElementById('contactEmail').textContent || '[your email]';
+
+      return `Privacy Policy\n\nEffective Date: ${date}\n\n${name} (\"we\", \"our\", \"us\") built the game ${name} as a [free/paid] application. This Privacy Policy explains what information we may collect and how we use it.\n\nInformation Collection and Use:\n- Device information (model, operating system, language).\n- Gameplay statistics and usage data.\n- Advertising identifiers (if ads are used).\n\nThird-Party Services:\n- Google Play Services: https://policies.google.com/privacy\n- AdMob: https://support.google.com/admob/answer/6128543?hl=en\n- Firebase: https://firebase.google.com/support/privacy\n\nCookies: We do not use cookies directly; third parties may.\n\nSecurity: No method of transmission or storage is 100% secure.\n\nChanges: We may update this policy; the Effective Date will be updated.\n\nContact: ${email}\n\n(Replace placeholders before publishing.)`;
+    }
+
+    document.getElementById('copyBtn').addEventListener('click', async()=>{
+      const text = buildPlainText();
+      try{ await navigator.clipboard.writeText(text); alert('Policy copied to clipboard'); }
+      catch(e){ prompt('Copy the policy text below (Ctrl+C / Cmd+C):', text); }
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      const blob = new Blob([buildPlainText()],{type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'privacy_policy.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
